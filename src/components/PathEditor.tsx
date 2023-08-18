@@ -14,23 +14,26 @@ export default function PathEditor() {
   useEffect(() => {
     setAllPath(originalPath)
   }, [originalPath])
-  return <div className="flex justify-center p-1 bg-red-50 w-1/2 flex-col">
-    <textarea placeholder="Digite o Path com 'echo $PATH'" value={originalPath} className="w-full p-1 mb-5"
+  return <div className="flex justify-center w-full p-1  bg-slate-100 flex-row">
+    <textarea placeholder="Digite o Path com 'echo $PATH'"
+      value={originalPath} className="w-1/4 p-2 "
       onChange={(e) => { setOriginalPath(e.target.value ?? '') }} />
-    {pathSplitted.map(item => {
-      newItemIndex++;
-      return <div key={item + newItemIndex} className="p-1 flex flex-row w-full justify-between">
-        <p className="w-auto">
-          ({newItemIndex}) {item}
-        </p>
-        <button onClick={() => handleRemoveItem(item)} className="w-auto">Remover</button>
-      </div>
-    })}
-    {allPath.length != 0 &&
-      <p className="w-full p-2">
+    <div className="w-1/2 h-full overflow-y-auto">
+      {pathSplitted.map(item => {
+        newItemIndex++;
+        return <div key={item + newItemIndex} className="p-1 flex flex-row w-full justify-between">
+          <p className="w-auto">
+            ({newItemIndex}) {item}
+          </p>
+          <button onClick={() => handleRemoveItem(item)} className="w-auto">Remover</button>
+        </div>
+      })}
+    </div>
+    <div className="w-1/4 p-2">
+      <p className="w-full">
         Path Alterado
-        <p className="flex overflow-x-auto">export PATH='{allPath}'</p>
       </p>
-    }
+      <p className="flex overflow-x-auto">export PATH='{allPath}'</p>
+    </div>
   </div>
 }

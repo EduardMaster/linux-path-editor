@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function Home() {
 
   return (
-    <main className="w-full flex justify-center items-center bg-gray-800">
+    <main className="flex p-4 bg-gray-800" style={{ height: "100vh" }}>
       <PathEditor />
     </main>
   )
